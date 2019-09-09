@@ -48,4 +48,11 @@ public class AttrController {
         return attrValueList;
     }
 
+    @RequestMapping("baseSaleAttrList")
+    @ResponseBody
+    public List<PmsBaseSaleAttr> baseSaleAttrList(){
+        List<PmsBaseSaleAttr> pmsBaseSaleAttrs = attrInfoService.baseSaleAttrList();
+        return pmsBaseSaleAttrs;
+    }
+
 }

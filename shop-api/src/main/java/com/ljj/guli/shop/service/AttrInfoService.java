@@ -2,6 +2,7 @@ package com.ljj.guli.shop.service;
 
 import com.ljj.guli.shop.bean.PmsBaseAttrInfo;
 import com.ljj.guli.shop.bean.PmsBaseAttrValue;
+import com.ljj.guli.shop.bean.PmsBaseSaleAttr;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface AttrInfoService {
     String saveAttrInfo( PmsBaseAttrInfo pmsBaseAttrInfo);
 
     List<PmsBaseAttrValue> getAttrValueList(String attrId);
+
+    List<PmsBaseSaleAttr> baseSaleAttrList();
 }

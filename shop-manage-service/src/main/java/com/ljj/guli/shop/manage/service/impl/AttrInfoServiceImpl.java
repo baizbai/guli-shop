@@ -3,12 +3,15 @@ package com.ljj.guli.shop.manage.service.impl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.ljj.guli.shop.bean.PmsBaseAttrInfo;
 import com.ljj.guli.shop.bean.PmsBaseAttrValue;
+import com.ljj.guli.shop.bean.PmsBaseSaleAttr;
 import com.ljj.guli.shop.manage.mapper.PmsBaseAttrIValueMapper;
 import com.ljj.guli.shop.manage.mapper.PmsBaseAttrInfoMapper;
+import com.ljj.guli.shop.manage.mapper.PmsBaseSaleAttrMapper;
 import com.ljj.guli.shop.service.AttrInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,13 +27,23 @@ public class AttrInfoServiceImpl implements AttrInfoService {
     PmsBaseAttrInfoMapper pmsBaseAttrInfoMapper;
     @Autowired
     PmsBaseAttrIValueMapper pmsBaseAttrIValueMapper;
+    @Autowired
+    PmsBaseSaleAttrMapper pmsBaseSaleAttrMapper;
 
     @Override
     public List<PmsBaseAttrInfo> attrInfoList(String catalog3) {
         PmsBaseAttrInfo pmsBaseAttrInfo = new PmsBaseAttrInfo();
         pmsBaseAttrInfo.setCatalog3Id(catalog3);
-        List<PmsBaseAttrInfo> PmsBaseAttrInfos = pmsBaseAttrInfoMapper.select(pmsBaseAttrInfo);
-        return PmsBaseAttrInfos;
+        List<PmsBaseAttrInfo> pmsBaseAttrInfos = pmsBaseAttrInfoMapper.select(pmsBaseAttrInfo);
+        for (PmsBaseAttrInfo baseAttrInfo : pmsBaseAttrInfos) {
+            List<PmsBaseAttrValue> pmsBaseAttrValues = new ArrayList<>();
+            PmsBaseAttrValue pmsBaseAttrValue = new PmsBaseAttrValue();
+            pmsBaseAttrValue.setAttrId(baseAttrInfo.getId());
+            pmsBaseAttrValues = pmsBaseAttrIValueMapper.select(pmsBaseAttrValue);
+            baseAttrInfo.setAttrValueList(pmsBaseAttrValues);
+        }
+
+        return pmsBaseAttrInfos;
     }
 
     @Override
@@ -77,5 +90,10 @@ public class AttrInfoServiceImpl implements AttrInfoService {
         List<PmsBaseAttrValue> select = pmsBaseAttrIValueMapper.select(value);
 
         return select;
+    }
+
+    @Override
+    public List<PmsBaseSaleAttr> baseSaleAttrList() {
+        return pmsBaseSaleAttrMapper.selectAll();
     }
 }

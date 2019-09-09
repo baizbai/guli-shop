@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="shop-web-util" />
+        <module name="fastdfs-client-java" />
+        <module name="shop-manage-service" />
+        <module name="shop-common-util" />
+        <module name="shop-api" />
+        <module name="shop-manage-web" />
+        <module name="shop-user" />
+        <module name="shop-service-util" />
+        <module name="shop-user-service" />
+        <module name="shop-user-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="fastdfs-client-java" target="1.6" />
+      <module name="shop-api" target="1.8" />
+      <module name="shop-common-util" target="1.8" />
+      <module name="shop-common-web" target="1.8" />
+      <module name="shop-manage-service" target="1.8" />
+      <module name="shop-manage-web" target="1.8" />
+      <module name="shop-parent" target="1.8" />
+      <module name="shop-service-util" target="1.8" />
+      <module name="shop-user" target="1.8" />
+      <module name="shop-user-service" target="1.8" />
+      <module name="shop-user-web" target="1.8" />
+      <module name="shop-web-util" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="shop-manage-service" options="" />
+      <module name="shop-manage-web" options="" />
+      <module name="shop-user" options="" />
+      <module name="shop-user-service" options="" />
+      <module name="shop-user-web" options="" />
+    </option>
+  </component>
+</project>
