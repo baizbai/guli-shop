@@ -1,7 +1,10 @@
 package com.ljj.guli.shop.manage.mapper;
 
 import com.ljj.guli.shop.bean.PmsProductSaleAttr;
+import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
+
+import java.util.List;
 
 /**
  * @author liujingjie
@@ -9,4 +12,6 @@ import tk.mybatis.mapper.common.Mapper;
  * @since V1.0
  **/
 public interface PmsProductSaleAttrMapper extends Mapper<PmsProductSaleAttr> {
+
+    List<PmsProductSaleAttr> selectSpuSaleAttrListCheckBySku(@Param("productId") String productId,@Param("skuId") String skuId);
 }
